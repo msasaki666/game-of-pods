@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gop-fileserver
+  labels:
+    name: gop-fileserver
+spec:
+  containers:
+  - name: fileserver
+    image: kodekloud/fileserver
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
+    volumeMounts:
+      - mountPath: /web
+        name: data-store
+  volumes:
+    - name: data-store
+      persistentVolumeClaim:
+        claimName: data-pvc

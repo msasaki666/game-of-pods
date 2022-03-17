@@ -1,0 +1,5 @@
+resources:
+  - pod.yaml
+  - pv.yaml
+  - pvc.yaml
+  - svc.yaml
