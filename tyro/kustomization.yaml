@@ -1,0 +1,6 @@
+resources:
+  - svc.yaml
+  - pod.yaml
+  - pvc.yaml
+  - role.yaml
+  - rolebinding.yaml

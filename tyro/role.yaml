@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: development
+  name: developer-role
+rules:
+- apiGroups: [""] # "" はコアのAPIグループを示します
+  resources:
+    - services
+    - persistentvolumeclaims
+    - pods
+  verbs:
+    - "*"

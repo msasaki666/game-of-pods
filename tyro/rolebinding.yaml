@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+# このRoleBindingは「jane」にNamespace「default」のポッドの読み取りを許可する
+# そのNamespaceでRole「pod-reader」を既に持っている必要があります。
+kind: RoleBinding
+metadata:
+  name: developer-rolebinding
+  namespace: development
+subjects:
+# 一つ以上の「subject」を指定する必要があります
+- kind: User
+  name: drogo # 「name」は大文字と小文字が区別されます
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  # 「roleRef」はRole/ClusterRoleへのバインドを指定します
+  kind: Role #RoleまたはClusterRoleである必要があります
+  name: developer-role # これはバインドしたいRole名またはClusterRole名とマッチする必要があります
+  apiGroup: rbac.authorization.k8s.io
